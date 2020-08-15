@@ -4,7 +4,7 @@ require 'pry'
 require './lib/nytimes'
 
 class NytimesTest < Minitest::Test
-  attr_reader :hash
+  #attr_reader :hash
 
   def setup
     @hash = Nytimes::DATA
@@ -23,6 +23,7 @@ class NytimesTest < Minitest::Test
   end
 
   def test_it_can_get_all_stories_with_subsection_of_politics
+    binding.pry
     result = @hash[:results].select{|story| story[:subsection] == "Politics"}
     assert result.is_a? (Array)
     assert_equal 6, result.count
